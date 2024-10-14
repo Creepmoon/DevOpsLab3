@@ -23,4 +23,4 @@ jobs:
         run: mvn compile
 
       - name: Run tests
-        run: mvn tests
+        run: mvn test
