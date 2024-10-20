@@ -11,10 +11,10 @@ jobs:
     
     steps:
       - name: Checkout Code
-        uses: action/Checkout@v2
+        uses: actions/checkout@v2
       
       - name: Use Common Steps
-        uses: Creepmoon/DevOpsLab3/tree/Good-CICD/.github/workflows/CommonSteps.yml
+        uses: ./.github/workflows/CommonSteps.yml
         with:
           java_version: '18'
 
@@ -61,5 +61,5 @@ jobs:
         run: mvn clean package tomcat7:deploy
         env:
           MAVEN_OPTS: "-Dtomcat.url=http://localhost:8080/manager/text \
-                           -Dtomcat.username=${{ secrets.USERNAME }} \
-                           -Dtomcat.password=${{ secrets.TOMCAT_PASSWORD }}"
+                          -Dtomcat.username=${{ secrets.USERNAME }} \
+                          -Dtomcat.password=${{ secrets.TOMCAT_PASSWORD }}"
