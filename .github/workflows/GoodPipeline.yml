@@ -37,11 +37,9 @@ jobs:
 
     steps:
       - name: Run Tests
-        run: mvn test -Dtest=!IntegrationTest
+        run: mvn test
 
-      - name: Run Integration Tests
-        if: github.ref == 'refs/heads/Good-CICD'
-        run: mvn verify -DskipUnitTests
+     
 
   deploy:
     needs: test
