@@ -9,6 +9,9 @@ jobs:
   prepare:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout Code
+        uses: action/Checkout@v2
+      
       - name: Use Common Steps
         uses: Creepmoon/DevOpsLab3/.github/workflows/CommonSteps.yml
         with:
