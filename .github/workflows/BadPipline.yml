@@ -51,5 +51,11 @@ jobs:
           java-version: '18'
           distribution: 'adopt'
 
+      - name: Install and start Tomcat
+        run: |
+          sudo apt-get install -y tomcat9
+          sudo systemctl start tomcat9
+          sudo systemctl status tomcat9
+
       - name: Deploy Application
         run: mvn clean deploy
