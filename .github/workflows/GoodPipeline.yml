@@ -10,9 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2
-
+    
       - name: Use Common Steps
         uses: ./.github/workflows/CommonSteps.yml
         with:
