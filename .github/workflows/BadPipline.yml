@@ -1,22 +1,55 @@
-stages:
-  - build
-  - test
-  - deploy
+name: Bad CI Pipeline
 
-build_job:
-  stage: build
-  script:
-    - mvn clean install  # Запускается полная сборка без кэширования зависимостей
+on:
+  push:
+    branches:
+      - Bad-CICD
 
-test_job:
-  stage: test
-  script:
-    - mvn test  # Запуск всех тестов без фильтрации, без разбивки на типы тестов
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-deploy_job:
-  stage: deploy
-  only:
-    - master  # Пайплайн срабатывает только на master, нет промежуточных окружений
-  script:
-    - mvn deploy  # Прямая отправка артефакта на production без staging и обработки ошибок
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
 
+      - name: Set up JDK 18
+        uses: actions/setup-java@v2
+        with:
+          java-version: '18'
+          distribution: 'adopt'
+
+      - name: Build with Maven
+        run: mvn clean install
+
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 18
+        uses: actions/setup-java@v2
+        with:
+          java-version: '18'
+          distribution: 'adopt'
+
+      - name: Run Tests
+        run: mvn test
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 18
+        uses: actions/setup-java@v2
+        with:
+          java-version: '18'
+          distribution: 'adopt'
+
+      - name: Deploy Application
+        run: mvn deploy
