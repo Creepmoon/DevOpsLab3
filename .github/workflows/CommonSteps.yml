@@ -3,8 +3,10 @@ name: Common Steps
 on:
   workflow_call:
     inputs:
-      java_version: true
-      type: string
+      java_version:
+        required: true
+        type: string
+
 jobs:
   common-steps:
     runs-on: ubuntu-latest
