@@ -69,4 +69,4 @@ jobs:
                            -Dtomcat.password=${{ secrets.TOMCAT_PASSWORD }}"
 
       - name: Check deployed application
-        run: curl -f http://localhost:8080/myapp || exit 1
+        run: curl -f http://localhost:8080/manager/text || exit 1
