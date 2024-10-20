@@ -54,15 +54,15 @@ jobs:
     
       - name: Install Tomcat
         run: |
-          sudo apt-get install -y tomcat9 tomcat9-admin tomcat9-common
+          sudo apt-get install -y tomcat7 tomcat7-admin tomcat7-common
 
       - name: Start Tomcat
         run: |
-          sudo systemctl start tomcat9
-          sudo systemctl status tomcat9
+          sudo systemctl start tomcat7
+          sudo systemctl status tomcat7
 
       - name: Build and Deploy with Maven
-        run: mvn clean package tomcat9:deploy
+        run: mvn clean package tomcat7:deploy
         env:
           MAVEN_OPTS: "-Dtomcat.url=http://localhost:8080/manager/text \
                            -Dtomcat.username=${{ secrets.USERNAME }} \
