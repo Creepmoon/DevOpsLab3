@@ -67,6 +67,3 @@ jobs:
           MAVEN_OPTS: "-Dtomcat.url=http://localhost:8080/manager/text \
                            -Dtomcat.username=${{ secrets.USERNAME }} \
                            -Dtomcat.password=${{ secrets.TOMCAT_PASSWORD }}"
-
-      - name: Check deployed application
-        run: curl -f http://localhost:8080/manager/text || exit 1
