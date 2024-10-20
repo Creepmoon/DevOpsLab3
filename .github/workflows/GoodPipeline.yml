@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Use Common Steps
-        uses: /.github/workflows/CommonSteps.yml
+        uses: ./.github/workflows/CommonSteps.yml
         with:
           java_version: '18'
 
