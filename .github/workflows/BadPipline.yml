@@ -52,4 +52,4 @@ jobs:
           distribution: 'adopt'
 
       - name: Deploy Application
-        run: mvn deploy
+        run: mvn clean deploy
