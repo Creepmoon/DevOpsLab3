@@ -69,8 +69,6 @@ jobs:
         run: mvn clean package tomcat7:deploy
         env:
           MAVEN_OPTS: "-Dtomcat.url=http://localhost:8080/manager/text \
-                           -Dtomcat.username=tomcat \
-                           -Dtomcat.password=password"
+          -Dtomcat.username=tomcat \
+          -Dtomcat.password=password"
 
-      - name: Deploy Application
-        run: mvn clean deploy
