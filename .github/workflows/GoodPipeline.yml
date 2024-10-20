@@ -4,10 +4,11 @@ on:
   push:
     branches:
       - Good-CICD
-jobs:
 
+jobs:
   prepare:
     runs-on: ubuntu-latest
+    
     steps:
       - name: Checkout Code
         uses: action/Checkout@v2
