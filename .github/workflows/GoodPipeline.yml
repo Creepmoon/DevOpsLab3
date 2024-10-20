@@ -8,16 +8,15 @@ on:
 jobs:
   prepare:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
-      
+
       - name: Use Common Steps
         uses: ./.github/workflows/CommonSteps.yml
         with:
           java_version: '18'
-
 
   build:
     needs: prepare
@@ -30,6 +29,7 @@ jobs:
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-maven
+
   test:
     needs: build
     runs-on: ubuntu-latest
@@ -42,7 +42,6 @@ jobs:
         if: github.ref == 'refs/heads/develop'
         run: mvn verify -DskipUnitTests
 
-
   deploy:
     needs: test
     runs-on: ubuntu-latest
@@ -52,14 +51,14 @@ jobs:
         run: |
           sudo apt-get install -y tomcat9 tomcat9-admin tomcat9-common
 
-
       - name: Start Tomcat
         run: |
           sudo systemctl start tomcat9
           sudo systemctl status tomcat9
+
       - name: Build and Deploy with Maven
         run: mvn clean package tomcat7:deploy
         env:
           MAVEN_OPTS: "-Dtomcat.url=http://localhost:8080/manager/text \
-                          -Dtomcat.username=${{ secrets.USERNAME }} \
-                          -Dtomcat.password=${{ secrets.TOMCAT_PASSWORD }}"
+                           -Dtomcat.username=${{ secrets.USERNAME }} \
+                           -Dtomcat.password=${{ secrets.TOMCAT_PASSWORD }}"
