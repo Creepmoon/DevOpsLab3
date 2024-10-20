@@ -37,6 +37,7 @@ jobs:
 
     steps:
       - name: Run Tests
+        uses: actions/checkout@v2
         run: mvn test
 
      
