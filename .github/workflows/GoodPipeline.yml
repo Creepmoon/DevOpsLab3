@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Use Common Steps
-        uses: creepmoon/DevOpsLab3/.github/workflows/CommonSteps.yml
+        uses: Creepmoon/DevOpsLab3/.github/workflows/CommonSteps.yml
         with:
           java_version: '18'
 
