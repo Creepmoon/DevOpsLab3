@@ -70,7 +70,7 @@ jobs:
           sudo /opt/tomcat/bin/startup.sh
 
       - name: Deploy to Tomcat
-        run: mvn package cargo:deploy
+        run: mvn package cargo:deploy -X
         env:
           TOMCAT_USERNAME: ${{ secrets.TOMCAT_USERNAME }}
           TOMCAT_PASSWORD: ${{ secrets.TOMCAT_PASSWORD }}
