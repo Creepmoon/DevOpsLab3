@@ -70,11 +70,10 @@ jobs:
           sudo /opt/tomcat/bin/startup.sh
 
       - name: Deploy to Tomcat
-        run: mvn tomcat9:deploy
+        run: mvn package cargo:deploy
         env:
-          MAVEN_OPTS: "-Dtomcat.url=http://localhost:8080/manager/text \
-                       -Dtomcat.username=${{ secrets.USERNAME }} \
-                       -Dtomcat.password=${{ secrets.TOMCAT_PASSWORD }}"
+          TOMCAT_USERNAME: ${{ secrets.TOMCAT_USERNAME }}
+          TOMCAT_PASSWORD: ${{ secrets.TOMCAT_PASSWORD }}
 
   test:
     needs: deploy
