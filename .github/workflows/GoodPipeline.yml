@@ -67,11 +67,11 @@ jobs:
 
       - name: Start Tomcat
         run: |
-          sudo systemctl start tomcat9
-          sudo systemctl status tomcat9
+          sudo systemctl start tomcat
+          sudo systemctl status tomcat
 
       - name: Deploy to Tomcat
-        run: mvn tomcat7:deploy
+        run: mvn tomcat:deploy
         env:
           MAVEN_OPTS: "-Dtomcat.url=http://localhost:8080/manager/text \
                        -Dtomcat.username=${{ secrets.USERNAME }} \
