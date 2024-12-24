@@ -6,21 +6,7 @@ on:
       - Good-CICD
 
 jobs:
-  prepare:
-    runs-on: ubuntu-22.04
-
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Set up JDK 18
-        uses: actions/setup-java@v4
-        with:
-          java-version: '18'
-          distribution: 'adopt'
-
   build:
-    needs: prepare
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout Code
