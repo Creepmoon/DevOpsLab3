@@ -70,7 +70,7 @@ jobs:
           sudo /opt/tomcat/bin/startup.sh
 
       - name: Deploy to Tomcat
-        run: mvn tomcat9:deploy
+        run: mvn /opt/tomcat/bin/startup.sh:deploy
         env:
           MAVEN_OPTS: "-Dtomcat.url=http://localhost:8080/manager/text \
                        -Dtomcat.username=${{ secrets.USERNAME }} \
