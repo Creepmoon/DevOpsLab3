@@ -1,9 +1,9 @@
-name: Improved CI Pipeline
+name: Good CI Pipeline
 
 on:
   push:
     branches:
-      - main
+      - Good-CICD
 
 jobs:
   prepare:
